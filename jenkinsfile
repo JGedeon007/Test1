@@ -1,6 +1,7 @@
 pipeline {
     agent any
 
+
     stages {
         stage('Login and Push'){
             steps {
@@ -8,6 +9,14 @@ pipeline {
                     withDockerRegistry(credentialsId: 'Docker') {
                         docker.build('jgedeon007/flaskapp').push('latest')
                     }
+                }
+            }
+        }
+        stage('AWS Commands'){
+            steps {
+                script {
+                    withAWS(credentials: 'jgedeon007_AWS', region: 'us-east-1')
+                        sh 'aws sts get-caller-identity'
                 }
             }
         }
