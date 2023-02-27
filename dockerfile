@@ -24,4 +24,4 @@ RUN mv /tmp/eksctl /usr/local/bin
 RUN curl -sSL https://get.docker.com/ | sh
 
 # set user Jenkins
-USER jenkins
+USER jenkins 
