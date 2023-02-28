@@ -34,6 +34,7 @@ kind: Service
 metadata:
   name: flask-service
 spec:
+  type: LoadBalancer
   selector:
     app.kubernetes.io/name: flask
   ports:
