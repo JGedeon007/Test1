@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: jgedeon007-namespace 
-___ 
+---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -28,4 +28,15 @@ spec:
         ports:
         - containerPort: 5000
         imagePullPolicy: Always
-___
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-service
+spec:
+  selector:
+    app.kubernetes.io/name: flask
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
